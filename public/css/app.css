@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "Segoe UI";
+    src: url("fonts/segoeui.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Segoe Fluent Icons";
+    src: url("fonts/SegoeIcons.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #2a2a2a;
+    color: white;
+    overflow: hidden;
+}
+
+icon {
+    font-family: "Segoe Fluent Icons", "Segoe MDL2 Assets";
+}
+
+.btn {
+    background-color: #1563D9;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid #1760CD;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #3477DB;
+    border: 1px solid #3769B4;
+}
+
+.sidebar {
+    text-align: center;
+
+}
+
+.sidebar icon {
+    font-size: x-large;
+}
+
+.sidebar2 {
+    width: 260px;
+    height: 100%;
+    background-color: #252526;
+    font-size: regular !important;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.sidebar2 ul {
+    font-size: small;
+}
+
+.sidebar2 ul li {
+    list-style: square;
+}
+
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding-top: 15px;
+    list-style-type: none;
+}
