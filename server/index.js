@@ -19,6 +19,13 @@ app.get("/app", (req, res) => {
     res.render("App", {})
 })
 
+app.get("/terminal", (req, res) => {
+    var u = req.query.u
+    res.render("Terminal", {
+        user: u
+    })
+})
+
 io.on('connection', (socket) => {
     socket.on("update-text", (txt) => {
         io.emit("update-text", (txt))

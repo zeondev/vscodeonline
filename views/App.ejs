@@ -11,7 +11,7 @@
 </head>
 
 <body style="margin:0;padding:0; height: 100vh; width:100vw;">
-    <div style="height:98vh;display:inline-flex; width: 100%;">
+    <div class="maincontainer">
         <div style="width:60px;height:100%;background-color:#333333;position:static;top:0;left:0;" class="sidebar">
             <ul>
                 <li>
@@ -29,9 +29,20 @@
         </div>
         <div class="sidebar2">
             <small>EXPLORER</small>
-            <ul>
-                <li>
-                    Start Folder
+            <ul style="padding-left: 10px;">
+                <details>
+                    <summary>
+                        Start Folder
+                    </summary>
+                    <details>
+                        <summary>
+                            Folder
+                        </summary>
+                        <ul>
+                            <li>File</li>
+                            <li>File</li>
+                        </ul>
+                    </details>
                     <ul>
                         <li>Folder</li>
                         <ul>
@@ -46,24 +57,21 @@
                             <li>File</li>
                         </ul>
                     </ul>
-                </li>
-                <ul>
-                    <li>Folder</li>
-                    <ul>
-                        <li>File</li>
-                        <li>File</li>
-                    </ul>
-                </ul>
+                </details>
             </ul>
         </div>
-        <div id="editor" style="width:55%;height: 100%;"></div>
+        <div id="editorArea" style="width:55%; height: 100%;">
+            <div class="topbar">
+                <span><img src="/icons/file.svg"><span>Test</span></span>
+            </div>
+            <div id="editor" style="width:100%;height: 95%;"></div>
+        </div>
         <div class="iframespace" style="width:45%;height: 100%; resize: vertical;">
             <iframe src="" frameborder="0" id="code" style="background:white; width: 100%; height: 100%;"></iframe>
         </div>
     </div>
-    <div style="width: 100%; height: 2vh; font-size: small; background-color: #007acc;">
-        Test
-        Hi
+    <div class="bottombar">
+        Test Hi
     </div>
     <!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
     <script src="/monaco-editor/min/vs/loader.js"></script>
@@ -84,12 +92,20 @@
             });
         });
 
+        $(window).on('resize', function (event) {
+            editor.layout();
+        });
+
         $(window).bind('keydown', function (event) {
             if (event.ctrlKey || event.metaKey) {
-                if (String.fromCharCode(event.which).toLowerCase() == "s") {
-                    event.preventDefault()
-                    $("#code").attr("src", "data:text/html;charset=utf-8," + escape(editor
-                        .getValue()))
+                switch (String.fromCharCode(event.which).toLowerCase()) {
+                    case "s":
+                        event.preventDefault()
+                        $("#code").attr("src", "data:text/html;charset=utf-8," + escape(editor
+                            .getValue()))
+                        break;
+                    case "q":
+                        var terminal = window.open("/terminal?u=User", "", "width=700,height=450")
 
                 }
             }

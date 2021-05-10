@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= user %>'s terminal
+    </title>
+    <link rel="stylesheet" href="css/terminal.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <ul id="output"></ul>
+    </div>
+    <div class="userinput">
+        <p style="display:flex;">
+            <%= user %>
+            <a id="directory"></a>@vsco$ <input type="text" id="code"></p>
+    </div>
+    <script>
+        document.addEventListener("click", function () {
+            document.getElementById('code').focus();
+        });
+        let code = document.getElementById("code");
+        $(document).ready(function () {
+            $('input').bind("enterKey", function (e) {
+                addtolist("<%= user %>@vsco" + "$ " + code.value);
+                fndcmds();
+            });
+            $('input').keyup(function (e) {
+                if (e.keyCode == 13) {
+                    $(this).trigger("enterKey");
+                }
+            });
+        });
+
+        function addtolist(text) {
+            var list = document.getElementById('output');
+            var entry = document.createElement('li');
+            entry.appendChild(document.createTextNode(text));
+            list.appendChild(entry);
+        }
+
+        function fndcmds() {
+            if (code.value == "version") {
+                addtolist("Version 1.0");
+            } else if (code.value == "help") {
+                addtolist("Commands: version, ls");
+            } else if (code.value == "ls") {
+                addtolist("WIP: sys, home");
+            } else {
+                addtolist("Invalid Syntax: " + code.value + " is a invalid command");
+            }
+            code.value = "";
+        }
+    </script>
+</body>
+
+</html>
